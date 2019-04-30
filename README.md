@@ -11,7 +11,7 @@ Team:
 Hari Krishna Pariveda https://www.linkedin.com/in/harikrishnapariveda/
 Sanjay Karnati https://www.linkedin.com/in/sanjaykarnati/
 Sri Harsha Vanga 
-Suvid Anand
+Suvid Anand www.linkedin.com/in/suvid-anand
 Varun Khatri https://www.linkedin.com/in/varun-khatri-9b8956107/
 
 Project Introduction
