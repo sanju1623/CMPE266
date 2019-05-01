@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+        div.gallery {
+            margin: 5px;
+            border: 1px solid #ccc;
+            float: left;
+            width: 200px;
+        }
+        div.gallery:hover {
+            border: 1px solid #777;
+        }
+        div.gallery img {
+            width: 100%;
+            height: auto;
+        }
+        div.desc {
+            padding: 10px;
+            text-align: center;
+            font-size:12px
+        }
+        div.source img {
+            width: 250px;
+            height: auto;
+        }
+        input[type="file"]{
+            display: none;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.85.0.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        AWS.config.region = 'us-east-1';
+        AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+            IdentityPoolId: 'us-east-1:416f81a5-6287-4a9b-901f-9c57f20906c6',
+        });
+        var s3 = new AWS.S3({
+            apiVersion: '2006-03-01',
+            params: {Bucket: 'detect-face-cmpe266'}
+        });
+		
+		
+        $('#addphoto').click(function(event) {
+            var files = $('#photoupload').prop('files');
+            if (!files.length) {
+               return alert('Please choose a file to upload!');
+            }
+            var file = files[0];
+            s3.upload({
+                    Key: file.name,
+                    Body: file
+                }, function(err, data) {
+                    if (err) {
+                        return alert('Error uploading photo: ', err);
+                    } else {
+                        //successfully uploaded photo
+                        var apiinvokeurl = 'https://u1bdzaol13.execute-api.us-east-1.amazonaws.com/lambda-dev';
+                        var url =  apiinvokeurl + '?filename=' + file.name;
+                        $.get(url, function(data){
+                            $('#album-list').empty();
+                            var imageurl = 'https://s3.amazonaws.com/ads-cmpe266/'+ data;
+                            var htmlelements = [
+                                '<div class="gallery">',
+                                '<a target="_blank" href="' + imageurl + '"><img src="' + imageurl +'"/></a>',
+                                '</div>'
+                            ]
+                            var img = gethtml(htmlelements);
+                            $(img).appendTo('#album-list');
+                        });
+                    }
+            });
+        });
+       function gethtml(elements) {
+          return elements.join('\n');
+       }
+       $('#photoupload').on("change", function(e){
+           $('#output').attr('src',URL.createObjectURL(e.target.files[0]));
+           $('#album-list').empty();
+        });
+    });
+  </script>
+  </head>
+  <body>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <div class="jumbotron">
+        <h1 align="center">Targeted Ad based on Facial, Demographic & Sentiment analysis</h1>
+    </div>
+    <div align="center">
+        <label class="btn btn-primary" for="photoupload">
+            Choose File<input id="photoupload" type="file" accept="image/*">
+        </label>
+        <button id="addphoto" class="btn btn-primary">Fetch Advertisement</button>
+        <br/><br/>
+        <div class="source"><img id="output"/></div>
+    </div>
+    <hr/>
+    <br/>
+    <div id="album-list">
+    </div>
+  </body>
+</html>
