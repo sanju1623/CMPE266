@@ -27,6 +27,21 @@
         input[type="file"]{
             display: none;
         }
+        .custom{
+            border: 2px solid black;
+            background: transparent;
+            color: black;
+            padding: 14px 28px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            margin: auto;
+            display: block;
+        }
+        .custom:hover{
+            background: white;
+            color: black;
+        }
 
 
     </style>
@@ -93,7 +108,8 @@
         <label class="btn btn-primary" for="photoupload">
             Choose File<input id="photoupload" type="file" accept="image/*">
         </label>
-        <button id="addphoto" class="btn btn-primary">Fetch Advertisement</button>
+        <br>
+        <button id="addphoto" class="custom">Fetch Advertisement</button>
         <br/><br/>
         <div class="source"><img id="output"/></div>
     </div>
