@@ -33,14 +33,26 @@
             color: black;
             padding: 14px 28px;
             font-size: 16px;
+            width: 200px;
             cursor: pointer;
             text-align: center;
             margin: auto;
-            display: block;
+            display: inline-block;
         }
         .custom:hover{
-            background: white;
-            color: black;
+            background: black;
+            color: white;
+        }
+        label.custom input[type="file"] {
+            position: absolute;
+        }
+        h1{
+            font-family: Verdana, Geneva, Tahoma, sans-serif
+        }
+        .bg{
+            background-image: url('https://sanju1623.github.io/public/background.png');
+            border: 100vw;
+            height: 100vh;
         }
 
 
@@ -105,17 +117,18 @@
         <h1 align="center">Targeted Ad based on Facial, Demographic & Sentiment analysis</h1>
     </div>
     <div align="center">
-        <label class="btn btn-primary" for="photoupload">
-            Choose File<input id="photoupload" type="file" accept="image/*">
+        <label class="custom" for="photoupload">
+            <input id="photoupload" type="file" accept="image/*">
+            <span>Choose File</span>
         </label>
-        <br>
+        <br><br>
         <button id="addphoto" class="custom">Fetch Advertisement</button>
         <br/><br/>
         <div class="source"><img id="output"/></div>
     </div>
     <hr/>
     <br/>
-    <div id="album-list">
+    <div id="album-list" class="bg">
     </div>
   </body>
 </html>
