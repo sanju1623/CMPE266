@@ -27,6 +27,18 @@ The application that we are focusing on is a Dynamic advertisement delivery syst
 
 The image data is captured from a video feed, still frames are acquired from this video feed and as mentioned above, the image is analyzed using Amazon Rekognition API to produce results. This project makes use of various Amazon cloud services like S3, DynamoDB, Lambda. 
 
+
+**Sample Demo Screenshots**
+
+![image](https://user-images.githubusercontent.com/36252473/57069895-bc2f1680-6c8a-11e9-857f-bab6fe0f7249.png)
+
+![image](https://user-images.githubusercontent.com/36252473/57069973-eed90f00-6c8a-11e9-916b-8df36b5be9d4.png)
+
+![image](https://user-images.githubusercontent.com/36252473/57069995-fc8e9480-6c8a-11e9-86d2-a7fdc8fdfe59.png)
+
+![image](https://user-images.githubusercontent.com/36252473/57070018-087a5680-6c8b-11e9-82f3-0cd360dd2554.png)
+
+
 **Pre-requisites Set Up**
 
 - **AWS S3** Bucket is used to store the images from video that were split into
