@@ -6,6 +6,14 @@ Course: Big Data Engineering and Analytics
 
 Professor Sanjay Garje https://www.linkedin.com/in/sanjaygarje/
 
+Public URL:
+Face Analysis - 
+https://sanju1623.github.io/CMPE266/
+https://my-static-site-example266code.herokuapp.com/
+
+Face Authentication and Verification - 
+https://my-static-site-example266code.herokuapp.com/
+
 Team:
 
 Hari Krishna Pariveda https://www.linkedin.com/in/harikrishnapariveda/
